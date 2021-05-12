@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting...</title>
+		<meta http-equiv="refresh" content="0;url=http://cloudhacktech.ga/">
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.location = "http://cloudhacktech.ga/";
+		</script>
+
+		<p>You are being redirected to <a href="http://cloudhacktech.ga/">http://cloudhacktech.ga/</a></p>
+	</body>
+</html>
