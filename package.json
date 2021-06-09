@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "devDependencies": {
+    "@builder.io/block-publish": "^1.1.2",
+    "lerna": "^3.20.2"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BuilderIO/builder"
+  },
+  "scripts": {
+    "prettier": "prettier",
+    "verify-git-not-dirty": "git diff --quiet || exit 1",
+    "_unlink": "lerna run _unlink --parallel",
+    "_install": "lerna run _install --stream",
+    "test": "lerna run test --stream",
+    "lerna": "lerna",
+    "install:packages": "npm run _install",
+    "bootstrap": "lerna bootstrap --force-local",
+    "reset": "npm run _install && npm run bootstrap && npm run _unlink",
+    "watch": "npm run start",
+    "develop": "npm run start",
+    "build": "lerna run build --stream --no-private --ignore @builder.io/plugin-loader --ignore @builder.io/plugin-shopify --ignore @builder.io/memsource-connector",
+    "release:patch": "npm run verify-git-not-dirty && npm run _install && npm run bootstrap && npm run build && lerna version patch --yes && lerna run build:unpkg:dist --no-private && ALLOW_PUBLISH=true lerna publish from-package --yes",
+    "release:minor": "npm run verify-git-not-dirty && npm run _install && npm run bootstrap && npm run build && lerna version minor --yes && lerna run build:unpkg:dist --no-private && ALLOW_PUBLISH=true lerna publish from-package --yes",
+    "release:prerelease:dev": "npm run build && lerna version prerelease --yes && lerna run build:unpkg:dist --no-private && ALLOW_PUBLISH=true lerna publish from-package --dist-tag dev --yes",
+    "release:dev": "npm run _install && npm run bootstrap && npm run release:prerelease:dev",
+    "prepublishOnly": "block-publish"
+  },
+  "dependencies": {
+    "prettier": "^2.0.5"
+  }
+}

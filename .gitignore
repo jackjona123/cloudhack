@@ -1,0 +1,15 @@
+node_modules
+*.log
+dist
+test-lib/**/*.js
+coverage
+.history
+.nyc_output
+.idea
+.vscode
+.rpt2_cache/
+.cache
+.DS_Store
+
+.firebase*
+firebase.json
